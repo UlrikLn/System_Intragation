@@ -52,7 +52,6 @@ function readXML(filename) {
 }
 
 
-// Running the functions
 (async () => {
   console.log("TXT:", readText("data/txt_products.txt"));
   console.log("JSON:", readJSON("data/json_products.json"));

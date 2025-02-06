@@ -1,2 +1,1 @@
-
 const classA = new ClassA();

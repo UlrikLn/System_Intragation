@@ -35,7 +35,6 @@ def read_xml(filename):
         data.append({child.tag: child.text for child in item})
     return data
 
-# Testing the functions
 print("TXT:", read_text("data/txt_products.txt"))
 print("JSON:", read_json("data/json_products.json"))
 print("YAML:", read_yaml("data/yaml_products.yaml"))

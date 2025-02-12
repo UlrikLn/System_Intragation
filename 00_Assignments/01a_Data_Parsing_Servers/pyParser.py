@@ -3,12 +3,11 @@ import yaml  #skulle installeres med pip install pyyaml
 import csv
 import xml.etree.ElementTree as ET
 
-
-
 # Function to read a text file
 def read_text(filename):
     with open(filename, 'r') as file:
         return [line.strip().split(", ") for line in file.readlines()]
+
 
 # Function to read JSON
 def read_json(filename):
@@ -35,8 +34,8 @@ def read_xml(filename):
         data.append({child.tag: child.text for child in item})
     return data
 
-print("TXT:", read_text("data/txt_products.txt"))
-print("JSON:", read_json("data/json_products.json"))
-print("YAML:", read_yaml("data/yaml_products.yaml"))
-print("CSV:", read_csv("data/csv_products.csv"))
-print("XML:", read_xml("data/xml_products.xml"))
+print(read_text("txt_products.txt"))
+print(read_json("json_products.json"))
+print(read_yaml("yaml_products.yaml"))
+print(read_csv("csv_products.csv"))
+print(read_xml("xml_products.xml"))

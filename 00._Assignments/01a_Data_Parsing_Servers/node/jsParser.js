@@ -5,7 +5,7 @@ const csv = require("csv-parser");
 
 // Function to read a text file
 function readText(filename) {
-  const data = fs.readFileSync(filename, "utf-8");
+  const data = fs.readFileSync(filename, "utf-8"); // utf-8 is so that the data is returned as a string and not a buffer (raw binary data)
   return data.split("\n").map(line => line.split(", "));
 }
 

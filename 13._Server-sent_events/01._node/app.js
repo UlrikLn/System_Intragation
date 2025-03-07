@@ -16,6 +16,8 @@ app.get("/synchronizetime", (req, res) => {
 
 function sendTimeToClient(res) {
     const time = new Date().toISOString();
+
+    // Der skal stå data: foran time, for at det bliver sendt som data/læses af eventsource
     res.write(`data: ${time} \n\n`); // write keeps the connection open compared to res.send
 }
 

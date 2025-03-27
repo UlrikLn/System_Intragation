@@ -39,7 +39,7 @@ app.get('/json', (req, res) => {
     res.json(JSON.parse(data));
 });
 
-// -------- Communicate with Server A --------
+// -------- Snak med Server A --------
 app.get('/requestToFastAPI/:format', async (req, res) => {
     const format = req.params.format;
     try {

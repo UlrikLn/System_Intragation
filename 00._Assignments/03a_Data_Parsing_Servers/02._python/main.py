@@ -40,7 +40,7 @@ def get_json_data():
         return json.load(file)
 
 
-# -------- Communicate with Server B --------
+# -------- Snak med Server B --------
 @app.get("/requestToNode/{format}")
 def request_node_data(format: str):
     response = requests.get(f"http://127.0.0.1:8080/{format}").json()

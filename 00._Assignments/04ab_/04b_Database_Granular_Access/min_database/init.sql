@@ -17,7 +17,8 @@ INSERT INTO pizzas (name, topping, price) VALUES
 ('Margarita Deluxe', 'Tomato, Fresh Mozzarella, Basil, Extra Virgin Olive Oil', 10.99),
 ('Seafood Special', 'Shrimp, Mussels, Calamari, Mozzarella', 12.99),
 ('Four Cheese', 'Mozzarella, Cheddar, Gorgonzola, Parmesan', 11.49),
-('Custom Pizza', 'Custom Toppings', 0.00);
+('Custom Pizza', 'Custom Toppings', 0.00),
+('Secret Pizza', 'Secret Toppings', 15.00);
 
 -- Create the customer role (user)
 CREATE ROLE customer LOGIN PASSWORD 'customerpass';
@@ -29,11 +30,12 @@ GRANT SELECT, UPDATE(topping) ON TABLE pizzas TO customer;
 -- Enable Row-Level Security on the pizzas table
 ALTER TABLE pizzas ENABLE ROW LEVEL SECURITY;
 
--- Create a policy that allows all users to SELECT all rows
-CREATE POLICY select_all ON pizzas
+-- Create a policy for the customer role: allow SELECT on all rows except "Secret Pizza"
+CREATE POLICY select_for_customer ON pizzas
   FOR SELECT
-  TO PUBLIC
-  USING (true);
+  TO customer
+  USING (name <> 'Secret Pizza');
+
 
 -- Create a policy for the customer that only permits UPDATE on the "Custom Pizza" row.
 CREATE POLICY customer_update_policy ON pizzas

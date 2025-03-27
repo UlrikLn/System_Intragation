@@ -1,4 +1,4 @@
-# Opsætning og hosting af PostgreSQL-database med Docker
+# Opgave med Exposer, hvor vi opretter og sætter databasen op og defter Integrator som som afprøver den opsatte database
 
 Denne guide hjælper dig med at opsætte en PostgreSQL-database med Docker og Docker Compose.
 
@@ -76,7 +76,7 @@ volumes:
 
 ## 3. Start PostgreSQL-containeren
 
-Navigér til mappen, hvor dine filer ligger, og start databasen:
+Navigér til mappen, hvor dine filer ligger, og start databasen (Husk at hav dem under samme sted):
 
 ```bash
 docker-compose up -d
@@ -131,7 +131,7 @@ psql -h [værts-ip fx 192.168.1.100] -p 5432 -U customer -d pizza_shop
 SELECT * FROM pizzas;
 ```
 
-_For at se alle, inkl. den hemmelige pizza, log ind som bruger `owner`._
+_For at se alle, inkl. den hemmelige pizza, log ind som bruger `owner` password = `ownerpass`._
 
 ### 3. Ændre prisen på "Custom Pizza" (vil fejle som customer)
 
@@ -145,5 +145,4 @@ UPDATE pizzas SET price = 5.99 WHERE name = 'Custom Pizza';
 UPDATE pizzas SET topping = 'Ananas, Skinke, Leverpostej' WHERE name = 'Custom Pizza';
 ```
 
-Din PostgreSQL-database er nu klar til brug med Docker!
 

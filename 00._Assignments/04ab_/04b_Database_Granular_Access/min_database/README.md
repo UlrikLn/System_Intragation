@@ -104,8 +104,6 @@ UPDATE pizzas SET price = 5.99 WHERE name = 'Custom Pizza';
 ```
 
 ### Test som bruger `customer`
-_Koden er = `customerpass`._
-
 
 ```bash
 docker exec -it pizza_shop_db psql -U customer -d pizza_shop
@@ -122,6 +120,8 @@ UPDATE pizzas SET topping = 'Chorizo' WHERE name = 'Custom Pizza'; -- vil lykkes
 ## Integrator Guide
 
 ### 1. Forbind til PostgreSQL
+
+_Koden er = `customerpass`._
 
 ```bash
 psql -h [værts-ip fx 192.168.1.100] -p 5432 -U customer -d pizza_shop

@@ -104,6 +104,8 @@ UPDATE pizzas SET price = 5.99 WHERE name = 'Custom Pizza';
 ```
 
 ### Test som bruger `customer`
+_Koden er = `customerpass`._
+
 
 ```bash
 docker exec -it pizza_shop_db psql -U customer -d pizza_shop

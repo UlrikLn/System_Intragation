@@ -1,0 +1,20 @@
+body {
+  margin: 0 auto;
+  padding: 1vw;
+}
+
+#vidoes {
+  display: flex;
+  gap: 2vw;
+}
+
+video {
+  background-color: grey;
+  width: 48vw;
+  height: auto;
+}
+
+#localVideo {
+  transform: scaleX(-1);
+
+}

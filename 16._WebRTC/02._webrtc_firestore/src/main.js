@@ -1,27 +1,27 @@
 import './style.css';
 
-// Import the functions you need from the SDKs you need
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAVDxam9X4VCkASe0DrCq2KvmolaRJGMC4",
-  authDomain: "webrtc-599bc.firebaseapp.com",
-  projectId: "webrtc-599bc",
-  storageBucket: "webrtc-599bc.firebasestorage.app",
-  messagingSenderId: "541633271892",
-  appId: "1:541633271892:web:c4907eabfd526d1ba1f5c1"
+  apiKey: "AIzaSyC3v0hEe1wmfhdWAKpeJvSMSBvUI-BjGVA",
+  authDomain: "webrtc-dc295.firebaseapp.com",
+  projectId: "webrtc-dc295",
+  storageBucket: "webrtc-dc295.firebasestorage.app",
+  messagingSenderId: "967549457557",
+  appId: "1:967549457557:web:0aeffadc33718a0a89b79c"
 };
 
 const app = firebase.initializeApp(firebaseConfig);
 const firestore = firebase.firestore();
 
-//firestore.collection("webrtc");
 
-// Html elements
+// HTML elements
 const localVideo = document.getElementById("localVideo");
 const remoteVideo = document.getElementById("remoteVideo");
+
 
 // Global state
 const GLOBAL_CALL_ID = "GLOBAL_CALL_ID";
@@ -32,16 +32,13 @@ let peerConnection;
 const servers = {
   iceServers: [
       {
-          urls: [
-              "stun:stun.l.google.com:19302",
-              "stun:stun1.l.google.com:19302",
-          ],
-      },
-],
+          urls: ['stun:stun1.l.google.com:19302'],
+      }
+  ]
 };
 
-async function startCall(){
-  // firestore -- Her henter den fra firestore collection calls GLOCAL CALL ID
+async function startCall() {
+  // Firestore
   const callDocument = firestore.collection('calls').doc(GLOBAL_CALL_ID);
   const offerCandidates = callDocument.collection('offerCandidates');
   const answerCandidates = callDocument.collection('answerCandidates');
@@ -54,42 +51,41 @@ async function startCall(){
 
   peerConnection = new RTCPeerConnection(servers);
 
-  localStream.getTracks().forEach((track) => remoteStream.addTrack(track, localStream));
+localStream.getTracks().forEach((track) => peerConnection.addTrack(track, localStream));
 
-  // listen to remote tracks from the peer
-  peerConnection.ontrack = (event) => {
-    event.streams[0].getTracks().forEach((track) => remoteStream.addTrack(track));
-  };
+peerConnection.ontrack = (event) => {
+  event.streams[0].getTracks().forEach((track) => remoteStream.addTrack(track));
+};
 
-  peerConnection.onicecandidate = (event) => {
-    event.candidate && offerCandidates.add(event.candidate.toJSON());
-  };
+peerConnection.onicecandidate = (event) => {
+  event.candidate && offerCandidates.add(event.candidate.toJSON());
+};
 
-  const offerDescription = await peerConnection.createOffer();
-  await peerConnection.setLocalDescription(offerDescription);
+const offerDescription = await peerConnection.createOffer();
+await peerConnection.setLocalDescription(offerDescription);
 
-  await callDocument.set({ offer: { sdp: offerDescription.sdp, type: offerDescription.type } })
+await callDocument.set({ offer: { sdp: offerDescription.sdp, type: offerDescription.type } });
 
-  callDocument.onSnapshot((snapshot) => {
-		const data = snapshot.data();
-		if (!peerConnection.currentRemoteDescription && data?.answer) {
-			const answerDescription = new RTCSessionDescription(data.answer);
-			peerConnection.setRemoteDescription(answerDescription);
-		}
-	});
+callDocument.onSnapshot((snapshot) => {
+  const data = snapshot.data();
+  if (!peerConnection.currentRemoteDescription && data?.answer) {
+    const answerDescription = new RTCSessionDescription(data.answer);
+    peerConnection.setRemoteDescription(answerDescription);
+  }
+});
 
-	answerCandidates.onSnapshot((snapshot) => {
-		snapshot.docChanges().forEach((change) => {
-			if (change.type === "added") {
-				const candidate = new RTCIceCandidate(change.doc.data());
-				if (peerConnection.remoteDescription) {
-					peerConnection.addIceCandidate(candidate);
-				}
-			}
-		});
-	});
-
+answerCandidates.onSnapshot((snapshot) => {
+  snapshot.docChanges().forEach((change) => {
+    if (change.type === "added") {
+      const candidate = new RTCIceCandidate(change.doc.data());
+      if (peerConnection.remoteDescription) {
+        peerConnection.addIceCandidate(candidate);
+      }
+    }
+  });
+});
 }
+
 
 async function answerCall() {
 	const callDocument = firestore.collection("calls").doc(GLOBAL_CALL_ID);
@@ -102,7 +98,7 @@ async function answerCall() {
 		event.candidate && answerCandidates.add(event.candidate.toJSON());
 	};
 
-	localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+	localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
 	localVideo.srcObject = localStream;
 
 	remoteStream = new MediaStream();

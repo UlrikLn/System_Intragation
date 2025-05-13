@@ -1,0 +1,12 @@
+<products>
+    <product>
+        <name>Laptop</name>
+        <price>1200</price>
+        <category>Electronics</category>
+    </product>
+    <product>
+        <name>Coffee Maker</name>
+        <price>80</price>
+        <category>Kitchen</category>
+    </product>
+</products>

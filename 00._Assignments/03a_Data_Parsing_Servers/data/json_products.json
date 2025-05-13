@@ -1,6 +1,0 @@
-{
-    "products": [
-        {"name": "Laptop", "price": 1200, "category": "Electronics"},
-        {"name": "Coffee Maker", "price": 80, "category": "Kitchen"}
-    ]
-}

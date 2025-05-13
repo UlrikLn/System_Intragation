@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Firebase Auth</title>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  </head>
+  <body>
+    <h2>Login</h2>
+    <input id="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="signIn()">Log In</button>
+    <button onclick="signUp()">Sign Up</button>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyByc827oOj5XsR4A5RH_dYOHt7F2daDJaQ",
+        authDomain: "aauthintegration.firebaseapp.com",
+        projectId: "aauthintegration",
+        storageBucket: "aauthintegration.firebasestorage.app",
+        messagingSenderId: "875081486661",
+        appId: "1:875081486661:web:9111e06089aff900526e2c"
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+
+      function signIn() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        auth.signInWithEmailAndPassword(email, password)
+          .then(user => {
+            console.log("Signed in", user);
+            window.location.href = "loggedin.html";  // ✅ Redirect on success
+          })
+          .catch(error => console.error(error));
+      }
+
+      function signUp() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        auth.createUserWithEmailAndPassword(email, password)
+          .then(user => {
+            console.log("Signed up", user);
+            window.location.href = "loggedin.html";  // ✅ Redirect on success
+          })
+          .catch(error => console.error(error));
+      }
+    </script>
+  </body>
+</html>

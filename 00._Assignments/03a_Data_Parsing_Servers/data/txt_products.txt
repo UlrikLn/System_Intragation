@@ -1,2 +1,0 @@
-Laptop, 1200, Electronics
-Coffee Maker, 80, Kitchen

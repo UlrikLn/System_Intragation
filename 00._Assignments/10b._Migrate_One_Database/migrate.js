@@ -3,9 +3,7 @@
 import 'dotenv/config';
 import Knex from 'knex';
 
-// ---------------------------------------------------------------------------
-// Two Knex clients, one per RDBMS
-// ---------------------------------------------------------------------------
+
 const pg = Knex({
   client: 'pg',
   connection: {

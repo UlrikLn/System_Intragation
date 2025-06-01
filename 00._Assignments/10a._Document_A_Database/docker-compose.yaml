@@ -1,3 +1,5 @@
+# Denne Docker Compose-fil konfigurerer og starter en PostgreSQL-container, eksponerer port 5432,
+# indlæser miljøvariabler, og kører initiale SQL-scripts ved opstart.
 services:
   db:
     image: postgres:latest

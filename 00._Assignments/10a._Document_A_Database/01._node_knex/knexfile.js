@@ -1,3 +1,5 @@
+// Denne konfigurationsfil definerer Knex-databaseforbindelsen (PostgreSQL) og migrationsindstillinger.
+// Bruges af Knex til at vide, hvordan det skal forbinde til databasen.
 import 'dotenv/config';
 
 /**

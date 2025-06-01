@@ -1,3 +1,5 @@
+// Denne migrationsfil opretter 'users' og 'products' tabellerne i databasen med definerede kolonner og constraints.
+// Bruges til at opbygge eller ændre databasens struktur.
 export function up(knex) {
     return knex.schema
         .createTable('users', (table) => {

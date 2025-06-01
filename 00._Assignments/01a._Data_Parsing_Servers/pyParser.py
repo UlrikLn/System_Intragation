@@ -8,7 +8,6 @@ def read_text(filename):
     with open(filename, 'r') as file:
         return [line.strip().split(", ") for line in file.readlines()]
 
-
 # Function to read JSON
 def read_json(filename):
     with open(filename, 'r') as file:

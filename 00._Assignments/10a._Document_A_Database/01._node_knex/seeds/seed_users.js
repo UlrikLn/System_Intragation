@@ -1,3 +1,6 @@
+// // Denne seed-fil sletter alle eksisterende brugere og indsætter tre eksempelbrugere i users-tabellen.
+// Bruges til at fylde databasen med testdata efter migrationer.
+
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> } 

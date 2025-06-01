@@ -5,12 +5,18 @@ const app = express();
 app.use(express.static('public'));
 
 app.get("/synchronizetime", (req, res) => {
+    // 200 er status code for OK
     res.writeHead(200,{
+        // Dette er en server-sent event (SSE) endpoint
+        // Connection skal være keep-alive for at holde forbindelsen åben
+        // Content-Type skal være text/event-stream for at klienten kan forstå det som en SSE
+        // Cache-Control skal være no-cache for at undgå caching af svar
         "Connection": "keep-alive",
         "Content-Type": "text/event-stream",
         "Cache-Control": "no-cache"
     });
 
+    // Hvor ofte vi sender tid til klienten
     setInterval(() => sendTimeToClient(res), 1000);
 });
 

@@ -2,7 +2,6 @@
 # Hvordan du kører programmet
 # uvicorn app:app --reload
 
-
 import json
 import yaml  #skulle installeres med pip install pyyaml
 import csv

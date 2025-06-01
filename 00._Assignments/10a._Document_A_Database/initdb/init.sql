@@ -1,3 +1,5 @@
+-- Denne SQL-dump-fil opretter tabeller, sekvenser og constraints, og indsætter initial data i databasen.
+-- Bruges til at initialisere databasen med en komplet snapshot af en tidligere tilstand.
 --
 -- PostgreSQL database dump
 --

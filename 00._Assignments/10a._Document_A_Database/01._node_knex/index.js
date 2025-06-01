@@ -1,3 +1,6 @@
+// Denne Node.js startfil opretter en Knex-forbindelse og tester forbindelsen til databasen med en simpel forespørgsel.
+// Bruges til at bekræfte at databasen er korrekt opsat og tilgængelig.
+
 import knex from 'knex';
 import knexConfig from './knexfile.js';
 

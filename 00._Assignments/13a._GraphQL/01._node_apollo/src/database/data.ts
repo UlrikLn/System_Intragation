@@ -1,3 +1,6 @@
+// Denne fil indenholder mock data for bøger og forfattere.
+// Den sender to arrays: `books` og `authors`
+// Bruges af resolvers til at simulere en database.
 const books = [
     {
       id: 1,

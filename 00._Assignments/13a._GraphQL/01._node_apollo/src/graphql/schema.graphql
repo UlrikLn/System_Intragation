@@ -1,3 +1,5 @@
+# Defines the GraphQL schema: types, queries, mutations, subscriptions.
+# Includes Book, Author, and helper types, plus entry points for API operations.
 type Book {
     id: ID!
     title: String

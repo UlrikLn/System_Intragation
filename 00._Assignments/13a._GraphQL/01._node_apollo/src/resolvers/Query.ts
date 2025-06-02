@@ -1,3 +1,6 @@
+// Defines the Query resolvers for fetching books and authors.
+// Supports getting all items or fetching by ID.
+// Ansvarlig for at hente bøger og forfattere.
 import db from "../database/data.js";
 
 function books(parent: any, args: any, context: any, info: any) {

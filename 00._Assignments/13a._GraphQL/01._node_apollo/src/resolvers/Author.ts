@@ -1,3 +1,5 @@
+// Resolver for Author type in GraphQL schema.
+// Linker author til deres bøger ved brug af dataen.
 import db from "../database/data.js";
 
 const Author = {

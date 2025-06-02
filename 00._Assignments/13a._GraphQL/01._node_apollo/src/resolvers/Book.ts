@@ -1,3 +1,5 @@
+// Defines the Book resolver, specifically resolving the `author` field.
+// Linker bøger til author
 import db from "../database/data.js";
 
 const Book = {

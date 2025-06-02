@@ -1,0 +1,45 @@
+node --loader ts-node/esm src/index.ts
+
+og lav denne query for at se lidt: 
+
+query {
+  books {
+    id
+    title
+    releaseYear
+    author {
+      id
+      name
+    }
+  }
+}
+
+
+Du kan også vise subcription
+
+subscription {
+  bookAdded {
+    id
+    title
+    releaseYear
+    author {
+      id
+      name
+    }
+  }
+}
+
+I en anden terminal kør dette
+
+mutation {
+  addBook(authorId: 1, title: "Ny bog fra subscription test", releaseYear: 2025) {
+    id
+    title
+    releaseYear
+  }
+}
+
+Kig i subcription
+
+Du kan nu med gennem websocket kanalen ws://localhost:4000/graphql.
+Og på pubsub kanalen ser i så eventet bookaded

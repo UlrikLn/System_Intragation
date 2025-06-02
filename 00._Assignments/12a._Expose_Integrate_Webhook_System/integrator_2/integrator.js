@@ -2,17 +2,19 @@ import express from "express";
 const app = express();
 app.use(express.json());
 
+// Gemmer alle modtagne events i en simpel array i hukommelsen
 const events = [];
 
-// Hook to receive events
+// Endpoint til at modtage webhook-events
 app.post("/hook", (req, res) => {
-  const entry = { time: new Date().toISOString(), payload: req.body };
-  events.unshift(entry);          // newest first
+  const entry = { time: new Date().toISOString(), // timestamp
+    payload: req.body }; // selve payload'en
+  events.unshift(entry);         // Tilføj event først i listen (nyeste øverst)
   console.log("Received event:", entry);
   res.sendStatus(200);
 });
 
-// UI to show received events
+// Endpoint til at vise en simpel HTML-side med modtagne events
 app.get("/", (_req, res) => {
   res.send(`<!DOCTYPE html>
   <meta charset="utf-8"><title>Webhook Log</title>

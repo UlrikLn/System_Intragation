@@ -21,11 +21,11 @@ const schemaFile = fs.readFileSync(schemaPath, 'utf8');
 const typeDefs = gql(schemaFile);
 
 
-import Query from './resolvers/Query.js';
-import Mutation from './resolvers/Mutation.js';
-import Subscription from './resolvers/Subscription.js';
-import Book from "./resolvers/Book.js";
-import Author from "./resolvers/Author.js";
+import Query from './resolvers/Query';
+import Mutation from './resolvers/Mutation';
+import Subscription from './resolvers/Subscription';
+import Book from "./resolvers/Book";
+import Author from "./resolvers/Author";
 
 
 const resolvers = {

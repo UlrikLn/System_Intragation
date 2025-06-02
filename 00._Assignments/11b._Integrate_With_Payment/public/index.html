@@ -13,7 +13,9 @@
   <script>
     // Show PayPal button
     paypal.Buttons({
+
       createOrder: function (data, actions) {
+        // Her defineres hvad ordren skal indeholde – fx beløb og valuta
         return actions.order.create({
           purchase_units: [{
             amount: {
@@ -23,6 +25,7 @@
         });
       },
       onApprove: function (data, actions) {
+      // Her “capturer” vi betalingen – altså færdiggør den, så pengene faktisk trækkes
         return actions.order.capture().then(function (details) {
           alert('Payment completed by ' + details.payer.name.given_name);
           window.location.href = 'success.html';

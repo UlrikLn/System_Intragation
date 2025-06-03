@@ -1,5 +1,5 @@
 // Definere mutation resolvers: addBook, updateBook, deleteBook
-// Indenholder logikken for data validering, udatering, og publicering af subscription events.
+// Indenholder logikken for subscription events.
 // Mutation resolvers er ansvarlige for at håndtere ændringer i dataen.
 import db from "../database/data.js";
 import { ApolloError } from "apollo-server";

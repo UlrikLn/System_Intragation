@@ -101,7 +101,7 @@ app.post("/ping", async (_req, res) => {
   res.json({ dispatched: rows.length });
 });
 
-// Endpoint: send den bedte event til alle webhooks, der lytter til den
+// Endpoint: send den bedte event til alle, der lytter til den
 // Og efter fortæl hvor mange lytter med til her.
 app.post("/events/:type", async (req, res) => {
   const { type } = req.params;

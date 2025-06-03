@@ -51,6 +51,7 @@ const wsServer = new WebSocketServer({
 // WebSocketServer start listening.
 const serverCleanup = useServer({ schema }, wsServer);  
   
+// Create an Apollo Server instance with the schema and resolvers.
 const server = new ApolloServer({ 
   schema,
   introspection: true,  // Enable introspection for field descriptions

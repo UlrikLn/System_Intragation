@@ -31,10 +31,12 @@
       function signIn() {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
+      // Brug Firebase Auth til at logge ind med email og password og tjekke credentials
       auth.signInWithEmailAndPassword(email, password)
         .then(user => {
             console.log("Signed in", user);
-            // Hent brugerens ID-token og kald backend for at teste beskyttet route
+            // Hent brugerens ID-token og send det til backend for at bekræfte, at brugeren er autentificeret (dette er nødvendigt, 
+            // hvis du vil beskytte egne server-API'er mod uautoriseret adgang)
             auth.currentUser.getIdToken(true).then(function(idToken) {
                 fetch('/protected', {
                     method: 'GET',

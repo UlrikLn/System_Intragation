@@ -32,6 +32,7 @@ function checkAuth(req, res, next) {
 const idToken = req.headers.authorization?.split('Bearer ')[1];
 if (!idToken) return res.status(401).send('No token provided');
 
+// Verificer ID-token med Firebase
 admin
     .auth()
     .verifyIdToken(idToken)

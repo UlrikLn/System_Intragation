@@ -18,6 +18,7 @@
         const serverSentStatusDiv = document.getElementById('server-sent_status');
         const serverSentTimeDiv = document.getElementById('server-sent_time');
 
+        // Her laver vi event source objektet, som forbinder til serveren
         const eventSource = new EventSource('/synchronizetime');
 
         eventSource.addEventListener("message", (event) => {

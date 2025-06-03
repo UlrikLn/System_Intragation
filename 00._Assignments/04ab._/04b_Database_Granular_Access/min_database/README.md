@@ -38,7 +38,7 @@ GRANT SELECT, UPDATE(topping) ON TABLE pizzas TO customer;
 -- Aktiver Row-Level Security
 ALTER TABLE pizzas ENABLE ROW LEVEL SECURITY;
 
--- Tillad customer-bruger at SELECT alle pizzaer undtagen "Secret Pizza"
+-- Tillad customer-bruger at SELECT alle pizzaer undtagen "Secret Pizza" (altså han kan ikke se secret pizza)
 CREATE POLICY select_for_customer ON pizzas
   FOR SELECT TO customer
   USING (name <> 'Secret Pizza');

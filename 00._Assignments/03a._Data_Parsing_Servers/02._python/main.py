@@ -2,11 +2,11 @@ from fastapi import FastAPI
 import requests
 import csv
 import json
-import yaml
+import yaml # Husk at installere PyYAML med poetry add pyyaml
 
 app = FastAPI() # Man skriver main fordi det er hvad filen hedder i "uvicorn main:app --reload" app er det den hedder her.
 
-DATA_FOLDER = "/Users/ulriklehun/Documents/System_Intragation/00._Assignments/03a_Data_Parsing_Servers/data/"
+DATA_FOLDER = "/Users/ulriklehun/Documents/System_Intragation/00._Assignments/03a._Data_Parsing_Servers/data/"
 
 # -------- XML Endpoint --------
 @app.get("/xml")
@@ -43,5 +43,7 @@ def get_json_data():
 # -------- Snak med Server B --------
 @app.get("/requestToNode/{format}")
 def request_node_data(format: str):
-    response = requests.get(f"http://127.0.0.1:8080/{format}").json()
+    response = requests.get(f"http://127.0.0.1:8080/{format}").json() # Integrere med node her
     return response
+
+

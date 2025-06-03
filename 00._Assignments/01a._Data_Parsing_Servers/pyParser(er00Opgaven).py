@@ -33,8 +33,11 @@ def read_xml(filename):
         data.append({child.tag: child.text for child in item})
     return data
 
-print(read_text("txt_products.txt"))
-print(read_json("json_products.json"))
-print(read_yaml("yaml_products.yaml"))
-print(read_csv("csv_products.csv"))
-print(read_xml("xml_products.xml"))
+print(read_text("data/txt_products.txt"))
+print(read_json("data/json_products.json"))
+print(read_yaml("data/yaml_products.yaml"))
+print(read_csv("data/csv_products.csv"))
+print(read_xml("data/xml_products.xml"))
+
+# poetry shell
+# python pyParser.py

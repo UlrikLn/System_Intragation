@@ -53,10 +53,10 @@ function readXML(filename) {
 
 
 (async () => {
-  console.log("TXT:", readText("data/txt_products.txt"));
-  console.log("JSON:", readJSON("data/json_products.json"));
-  console.log("YAML:", readYAML("data/yaml_products.yaml"));
-  console.log("CSV:", await readCSV("data/csv_products.csv"));
-  console.log("XML:", await readXML("data/xml_products.xml"));
+  console.log("TXT:", readText("../data/txt_products.txt"));
+  console.log("JSON:", readJSON("../data/json_products.json"));
+  console.log("YAML:", readYAML("../data/yaml_products.yaml"));
+  console.log("CSV:", await readCSV("../data/csv_products.csv"));
+  console.log("XML:", await readXML("../data/xml_products.xml"));
 })();
 

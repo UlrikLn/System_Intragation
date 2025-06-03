@@ -42,4 +42,4 @@ mutation {
 Kig i subcription
 
 Du kan nu med gennem websocket kanalen ws://localhost:4000/graphql.
-Og på pubsub kanalen ser i så eventet bookaded
+Og på pubsub kanalen ser i så eventet bookadeds

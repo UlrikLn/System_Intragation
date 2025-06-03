@@ -18,7 +18,6 @@ temlates = Jinja2Templates(directory="templates")
 def serve_root_page(request: Request):
     return temlates.TemplateResponse("index.html", {"request": request})
 
-# en generator funktion er en funktion som???
 async def date_generator():
       while True: 
             now = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
